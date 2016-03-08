@@ -179,7 +179,7 @@ readline_done:			# at this point, $v0 contains the # bytes read
 readline_done2: 	# For windows users
 	li $t3, 0x0a
 	lbu $t2, 1($a1)
-	beq $t2, $t3, readline_err3
+	bne $t2, $t3, readline_err3
 	sb $0, 0($a1)
 	sb $0, 1($a1)
 	move $v1, $t0
