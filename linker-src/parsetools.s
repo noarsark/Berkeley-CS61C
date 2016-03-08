@@ -166,12 +166,22 @@ readline_next:
 	lbu $t2, 0($a1)
 	li $t3, 0x0a		# newline char
 	beq $t2, $t3, readline_done
+	li $t3, 0x0d		# carriage return
+	beq $t2, $t3, readline_done2
 	addiu $a1, $a1, 1
 	subu $t4, $a1, $t0
 	bgt $t4, $t1, readline_err2
 	j readline_next
 readline_done:			# at this point, $v0 contains the # bytes read
 	sb $0, 0($a1)
+	move $v1, $t0
+	jr $ra
+readline_done2: 	# For windows users
+	li $t3, 0x0a
+	lbu $t2, 1($a1)
+	beq $t2, $t3, readline_err3
+	sb $0, 0($a1)
+	sb $0, 1($a1)
 	move $v1, $t0
 	jr $ra
 readline_err:
@@ -185,7 +195,13 @@ readline_err2:
 	li $v0, 4
 	syscall
 	li $v0, -1
-	jr $ra				# End readline()
+	jr $ra				
+readline_err3:
+	la $a0, readline_err_windows
+	li $v0, 4
+	syscall
+	li $v0, -1
+	jr $ra		# End readline()
 
 .data
 buffer:	.space 1024
@@ -194,3 +210,5 @@ readline_err_syscall:
 	.asciiz "Error in readline: Could not read from file.\n"
 readline_err_bufsize:
 	.asciiz "Error in readline: Exceeded maximum buffer size.\n"
+readline_err_windows:
+	.asciiz "Error in readline: Carriage return but no newline.\n"
