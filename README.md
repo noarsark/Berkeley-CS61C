@@ -1,1 +1,2 @@
-# learning-computer-organization
+# learning computer organization 
+My repository when learning computer organization.
