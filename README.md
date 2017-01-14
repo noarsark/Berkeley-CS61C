@@ -1,2 +1,2 @@
 # Learning computer organization 
-My repository when learning computer organization and architecture.
+My repository for learning computer organization and architecture.
