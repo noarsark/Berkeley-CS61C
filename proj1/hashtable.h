@@ -22,16 +22,18 @@
  */
 
 struct HashBucket {
-  void *key;
-  void *data;
-  struct HashBucket *next;
+    void *key;
+    void *data;
+    struct HashBucket *next;
 };
 
 typedef struct HashTable {
-  unsigned int (*hashFunction) (void *);
-  int (*equalFunction) (void *, void *);
-  struct HashBucket **data;
-  int size;
+    unsigned int (*hashFunction)(void *);
+    
+    int (*equalFunction)(void *, void *);
+    
+    struct HashBucket **data;
+    int size;
 } HashTable;
 
 /*
@@ -41,8 +43,8 @@ typedef struct HashTable {
  * we provide the implementation and set up the hashtable for your use.
  */
 extern HashTable *createHashTable(int size,
-				  unsigned int (*hashFunction)(void *),
-				  int (*equalFunction)(void *, void *));
+                                  unsigned int (*hashFunction)(void *),
+                                  int (*equalFunction)(void *, void *));
 
 /*
  * This inserts a bit of data and key into a hashtable.  To use this

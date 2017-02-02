@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/pwd/work/Berkeley-CS61C/proj1/hashtable.c
+hashtable.h
+/Users/pwd/work/Berkeley-CS61C/proj1/hashtable.h
+stdlib.h
+-
+
+/Users/pwd/work/Berkeley-CS61C/proj1/hashtable.h
+
+/Users/pwd/work/Berkeley-CS61C/proj1/philspel.c
+hashtable.h
+/Users/pwd/work/Berkeley-CS61C/proj1/hashtable.h
+philspel.h
+/Users/pwd/work/Berkeley-CS61C/proj1/philspel.h
+stdio.h
+-
+stdlib.h
+-
+ctype.h
+-
+string.h
+-
+
+/Users/pwd/work/Berkeley-CS61C/proj1/philspel.h
+

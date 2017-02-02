@@ -38,28 +38,28 @@ HashTable *dictionary;
  * to standard error (stderr) and it will be ignored in the grading
  * process, in the same way which this does.
  */
-int main(int argc, char **argv){
-  if(argc != 2){
-    fprintf(stderr, "Specify a dictionary\n");
-    return 0;
-  }
-  /*
-   * Allocate a hash table to store the dictionary
-   */
-  fprintf(stderr, "Creating hashtable\n");
-  dictionary = createHashTable(2255, &stringHash, &stringEquals);
-
-  fprintf(stderr, "Loading dictionary %s\n", argv[1]);
-  readDictionary(argv[1]);
-  fprintf(stderr, "Dictionary loaded\n");
-
-  fprintf(stderr, "Processing stdin\n");
-  processInput();
-
-  /* main in C should always return 0 as a way of telling
-     whatever program invoked this that everything went OK
+int main(int argc, char **argv) {
+    if (argc != 2) {
+        fprintf(stderr, "Specify a dictionary\n");
+        return 0;
+    }
+    /*
+     * Allocate a hash table to store the dictionary
      */
-  return 0;
+    fprintf(stderr, "Creating hashtable\n");
+    dictionary = createHashTable(2255, &stringHash, &stringEquals);
+    
+    fprintf(stderr, "Loading dictionary %s\n", argv[1]);
+    readDictionary(argv[1]);
+    fprintf(stderr, "Dictionary loaded\n");
+    
+    fprintf(stderr, "Processing stdin\n");
+    processInput();
+    
+    /* main in C should always return 0 as a way of telling
+       whatever program invoked this that everything went OK
+       */
+    return 0;
 }
 
 /*
@@ -67,10 +67,10 @@ int main(int argc, char **argv){
  * to a char * (null terminated string) which is done for you here for
  * convenience.
  */
-unsigned int stringHash(void *s){
-  char *string = (char *) s;
-  fprintf(stderr,"Need to define stringHash\n");
-  exit(0);
+unsigned int stringHash(void *s) {
+    char *string = (char *) s;
+    fprintf(stderr, "Need to define stringHash\n");
+    exit(0);
 }
 
 /*
@@ -78,11 +78,11 @@ unsigned int stringHash(void *s){
  * value if the two strings are identical (case sensitive comparison)
  * and 0 otherwise.
  */
-int stringEquals(void *s1, void *s2){
-  char *string1 = (char *) s1;
-  char *string2 = (char *) s2;
-  fprintf(stderr,"Need to define stringEquals\n");
-  exit(0);
+int stringEquals(void *s1, void *s2) {
+    char *string1 = (char *) s1;
+    char *string2 = (char *) s2;
+    fprintf(stderr, "Need to define stringEquals\n");
+    exit(0);
 }
 
 /*
@@ -99,9 +99,9 @@ int stringEquals(void *s1, void *s2){
  * returns in between, you can
  * safely use fscanf() to read in the strings.
  */
-void readDictionary(char *filename){
-  fprintf(stderr,"Need to define readDictionary\n");
-  exit(0);
+void readDictionary(char *filename) {
+    fprintf(stderr, "Need to define readDictionary\n");
+    exit(0);
 }
 
 
@@ -128,7 +128,7 @@ void readDictionary(char *filename){
  * numbers, punctuation) which are longer than 60 characters. For the final 20%
  * of your grade, you can no longer assume words have a bounded length.
  */
-void processInput(){
-  fprintf(stderr,"Need to define processInput\n");
-  exit(0);
+void processInput() {
+    fprintf(stderr, "Need to define processInput\n");
+    exit(0);
 }
