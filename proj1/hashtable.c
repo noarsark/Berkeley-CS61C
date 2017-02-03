@@ -2,7 +2,6 @@
 #include "hashtable.h"
 #include <stdlib.h>
 
-
 /*
  * creates a hashtable
  */
