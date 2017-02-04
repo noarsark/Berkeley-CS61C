@@ -1,3 +1,0 @@
-/Users/pwd/work/Berkeley-CS61C/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/pwd/work/Berkeley-CS61C/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/pwd/work/Berkeley-CS61C/cmake-build-debug/CMakeFiles/Berkeley_CS61C.dir

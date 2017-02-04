@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
     printf("equal test 2 result = %d\n", ll_equal(&nodes[0], &nodes[2]));
     printf("equal test 3 result = %d\n", ll_equal(&nodes[0], NULL));
     printf("equal test 3 result = %d\n", ll_equal(NULL, NULL));
-    
+
     return 0;
 }
 
