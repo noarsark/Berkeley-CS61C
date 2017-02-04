@@ -38,8 +38,11 @@ HashTable *dictionary;
  * to standard error (stderr) and it will be ignored in the grading
  * process, in the same way which this does.
  */
+
+void test_process_input();
+
 int main(int argc, char **argv) {
-    if (argc <= 2) {
+    if (argc < 2) {
         fprintf(stderr, "Specify a dictionary\n");
         return 0;
     }
@@ -56,6 +59,10 @@ int main(int argc, char **argv) {
     fprintf(stderr, "Processing stdin\n");
     processInput();
     fprintf(stderr, "stdin processed\n");
+
+//    fprintf(stderr, "Processing sampleInput\n");
+//    test_process_input();
+//    fprintf(stderr, "sampleInput processed\n");
     /* main in C should always return 0 as a way of telling
        whatever program invoked this that everything went OK
        */
@@ -150,8 +157,14 @@ void readDictionary(char *filename) {
     fclose(fp);
 }
 
-/* CHeck if the given word satisfies one of the three given cases,
- * then return 1; else return 0. */
+/* If word length is zero, then it shouldn't be a word. */
+int is_word(char *word) {
+    return strlen(word);
+}
+
+/* Check if the given word satisfies one of the three given cases,
+ * then return 1; else return 0. Assuming the word is valid, ie,
+ * length > 0. */
 int is_currectly_spelled(char *word) {
     /* Case one, exact same word in dictionary. */
     if (findData(dictionary, word)) {
@@ -164,8 +177,7 @@ int is_currectly_spelled(char *word) {
     if (findData(dictionary, word)) {
         return 1;
     }
-    /* Case three, all to lower case. Note that word cannot be NULL
-     * otherwise it wouldn't be in the dictionary. */
+    /* Case three, all to lower case. . */
     word[0] = tolower(word[0]);
     if (findData(dictionary, word)) {
         return 1;
@@ -228,8 +240,8 @@ void processInput() {
             word[total_ch] = '\0';
             printf("%s", word);
 
-            /* Check if the word is correctly spelled. */
-            if (!is_currectly_spelled(word)) {
+            /* Check if the word is valid and correctly spelled. */
+            if (is_word(word) && !is_currectly_spelled(word)) {
                 printf(" [sic]");
             }
 
@@ -242,3 +254,50 @@ void processInput() {
     }
     free(word);
 }
+
+/* Same as the processInput() routine but use file input instead of stdin. */
+//void test_process_input() {
+//    /* Set default buffer size for current word, which can enlarge later. */
+//    const int DEFAULT_BUFFER_SIZE = 61;
+//    int buffer_size = DEFAULT_BUFFER_SIZE;
+//    char *word = malloc(buffer_size * sizeof(char));
+//
+//    char c;           // current character
+//    int total_ch = 0; // total number of characters in current word
+//
+//    FILE *fr = fopen("sampleInput", "r");
+//    FILE *fw = fopen("actualOutput", "w");
+//    /* Keep getting character, one by one, until the end the stdin. */
+//    while ((c = fgetc(fr)) != EOF) {
+//        if (isalpha(c)) {
+//            /* current character is letter, still middle of word. */
+//            word[total_ch] = c;
+//            ++total_ch;
+//
+//            /* Reallocate larger memory if total characters of current word
+//             * are larger than buffer size. */
+//            if (total_ch == buffer_size) {
+//                buffer_size *= 2;
+//                word = realloc(word, buffer_size * sizeof(char));
+//            }
+//        } else {
+//            /* current character is not letter, ie, reach the end of the word. */
+//            word[total_ch] = '\0';
+//            fprintf(fw, "%s", word);
+//
+//            /* Check if the word is valid and correctly spelled. */
+//            if (is_word(word) && !is_currectly_spelled(word)) {
+//                fprintf(fw, " [sic]");
+//            }
+//
+//            fprintf(fw, "%c" ,c);
+//            /* reset for getting new word. */
+//            buffer_size = DEFAULT_BUFFER_SIZE;
+//            total_ch = 0;
+//            word = realloc(word, buffer_size * sizeof(char));
+//        }
+//    }
+//    free(word);
+//    fclose(fr);
+//    fclose(fw);
+//}

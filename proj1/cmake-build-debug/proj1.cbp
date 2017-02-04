@@ -80,6 +80,27 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/pwd/work/Berkeley-CS61C/proj1/CMakeLists.txt">
+			<Option target="proj1"/>
+		</Unit>
+		<Unit filename="/Users/pwd/work/Berkeley-CS61C/proj1/Makefile">
+			<Option target="proj1"/>
+		</Unit>
+		<Unit filename="/Users/pwd/work/Berkeley-CS61C/proj1/cmake-build-debug/CMakeCache.txt">
+			<Option target="proj1"/>
+		</Unit>
+		<Unit filename="/Users/pwd/work/Berkeley-CS61C/proj1/cmake-build-debug/Makefile">
+			<Option target="proj1"/>
+		</Unit>
+		<Unit filename="/Users/pwd/work/Berkeley-CS61C/proj1/cmake-build-debug/cmake_install.cmake">
+			<Option target="proj1"/>
+		</Unit>
+		<Unit filename="/Users/pwd/work/Berkeley-CS61C/proj1/cmake-build-debug/proj1">
+			<Option target="proj1"/>
+		</Unit>
+		<Unit filename="/Users/pwd/work/Berkeley-CS61C/proj1/cmake-build-debug/proj1.cbp">
+			<Option target="proj1"/>
+		</Unit>
 		<Unit filename="/Users/pwd/work/Berkeley-CS61C/proj1/hashtable.c">
 			<Option target="proj1"/>
 		</Unit>
