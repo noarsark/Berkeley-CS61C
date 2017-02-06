@@ -4,7 +4,7 @@
 
 /**
  * Deletes all comments of a C source file.
- * TODO: cannot handle case for "\", eg,
+ * TODO: To handle special case for "\", eg,
  *
  * [code]  //this is a comment \
  *         but this is also a comment [\code]
