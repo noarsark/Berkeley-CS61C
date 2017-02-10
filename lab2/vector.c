@@ -23,7 +23,7 @@ vector_t *vector_new() {
     vector_t *retval;
 
     /* First, we need to allocate the memory for the struct */
-    retval = malloc(1 * sizeof(vector_t));
+    retval = malloc(sizeof(vector_t));
 
     /* Check our return value to make sure we got memory */
     if (retval == NULL) {
