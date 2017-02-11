@@ -4,7 +4,6 @@
 // Assume 0 <= n <= 31
 unsigned get_bit(unsigned x,
                  unsigned n) {
-    // YOUR CODE HERE
     // Returning -1 is a placeholder (it makes
     // no sense, because get_bit only returns
     // 0 or 1)
@@ -25,15 +24,9 @@ void set_bit(unsigned *x,
 // Assume 0 <= n <= 31
 void flip_bit(unsigned *x,
               unsigned n) {
-    // YOUR CODE HERE
 //    set_bit(x, n, ~get_bit(*x, n) & 1); Note it is one working way, though.
     *x ^= (1 << n);
 }
-
-
-/*
- * YOU CAN IGNORE THE REST OF THIS FILE
- */
 
 void test_get_bit(unsigned x,
                   unsigned n,
