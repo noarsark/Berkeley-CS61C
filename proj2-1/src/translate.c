@@ -152,7 +152,6 @@ int translate_inst(FILE *output, const char *name, char **args, size_t num_args,
     } else if (!strcmp(name, "mflo")) {
         return write_rtype(0x12, output, args, num_args);
     }
-    /* YOUR CODE HERE */
     return -1;
 }
 
