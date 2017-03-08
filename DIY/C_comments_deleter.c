@@ -1,13 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <memory.h>
+#include <string.h>
 
 /**
- * Deletes all comments of a C source file.
- * TODO: To handle special case for "\", eg,
- *
- * [code]  //this line is a comment \
- *         but this line is also a comment [\code]
+ * Deletes all comments of a C source file and print the rest to
+ * the file OUTPUT.
  */
 void comment_deleter(char *input) {
     FILE *in = fopen(input, "r");
@@ -23,13 +20,13 @@ void comment_deleter(char *input) {
     char c;
     while ((c = fgetc(in)) != EOF) {
         if (c == '\'' || c == '"') {
-            /* Quotes, no comment inside. */
+            /* String literals, no comment inside. */
             char match = fgetc(in);
             while (1) {
                 if (match == c) {
                     break;
                 }
-                fputc(match, out); // Here, match cannot be EOF for a valid C source file.
+                fputc(match, out);  // Here, match cannot be EOF for a valid C source file.
                 match = fgetc(in);
             }
         } else if (c == '/') {
@@ -41,10 +38,13 @@ void comment_deleter(char *input) {
             }
 
             if (next_c == '/') {
-                /* One-line comment detected, here assuming that
-                 * the line isn't too long. */
+                /* One-line comment detected. */
                 char line[256];
-                fgets(line, sizeof line, in);
+                do {
+                    if (fgets(line, sizeof line, in) == NULL){
+                        break;
+                    }
+                } while (line[strlen(line) - 2] == '\\');
                 continue;
             }
 
@@ -55,6 +55,7 @@ void comment_deleter(char *input) {
                     if (match_star == '*') {
                         char match_back_slash = getc(in);
                         if (match_back_slash == '/') {
+                            /* Comment closed. */
                             break;
                         }
                     }
@@ -70,11 +71,12 @@ void comment_deleter(char *input) {
     fclose(out);
 }
 
+
 int main() {
     char input[256];
-    printf("Choose a C source file which you want to delete comments of: ");
+    printf("Choose the C source file you want to delete comments of: ");
     scanf("%s", input);
-    printf("Running comment deleter\n");
+    printf("Running comment deleter...\n");
     comment_deleter(input);
     printf("Comments deleted.\n");
     return 0;
