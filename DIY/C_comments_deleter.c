@@ -3,7 +3,7 @@
 #include <string.h>
 
 /**
- * Deletes all comments of a C source file and print the rest to
+ * Deletes all comments of a C source file and prints the rest to
  * the file OUTPUT.
  */
 void comment_deleter(char *input) {
