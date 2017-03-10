@@ -11,7 +11,9 @@
 
 
 int main() {
-    printf("Hello world, here // and /**/ are not comment ...\n");
+    char *x = "//\"";
+    printf("Hello world, here //\\\ and /**/ are not comment ...\n");
+
     printf("Oh, and this one, '\\', isn't, either ...\n");
     double test = 12345678912.901;
 }

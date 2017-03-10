@@ -21,9 +21,11 @@ void comment_deleter(char *input) {
     while ((c = fgetc(in)) != EOF) {
         if (c == '\'' || c == '"') {
             /* String literals, no comment inside. */
+            fputc(c, out);
             char match = fgetc(in);
             while (1) {
                 if (match == c) {
+                    fputc(match, out);
                     break;
                 }
                 fputc(match, out);  // Here, match cannot be EOF for a valid C source file.
